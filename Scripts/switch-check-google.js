@@ -122,11 +122,11 @@ function ReOrder(cnt) {
     content: array
 };
     $configuration.sendMessage(messageURL).then(resolve => {
-    if (resolve.ret) {
-        console.log(resolve.ret);
-    }
     if (resolve.error) {
-        let output=JSON.stringify(resolve.error);
+        console.log(resolve.error);
+    }
+    if (resolve.ret) {
+        let output=JSON.stringify(resolve.ret);
         console.log("节点延迟："+output);
         //排序
         console.log("排序前: "+ array)
@@ -134,17 +134,17 @@ function ReOrder(cnt) {
             try {
         array.sort(function (a,b) {
             //console.log(a+" VS "+b)
-        return (resolve.error[a][1]!=-1 && resolve.error[b][1] !=-1)? resolve.error[a][1]-resolve.error[b][1] : resolve.error[b][1]
+        return (resolve.ret[a][1]!=-1 && resolve.ret[b][1] !=-1)? resolve.ret[a][1]-resolve.ret[b][1] : resolve.ret[b][1]
     })
     } catch (err) {
         console.log(err)
     }
     }  
     console.log("排序后: "+array)
-    let Ping =resolve.error[array[0]]
+    let Ping =resolve.ret[array[0]]
         const dict = { [policy] : array[0]};
         if(array[0]) {
-            console.log("选定被送中节点："+array[0]+"延迟数据为 👉"+Ping)
+            console.log("选定未被送中节点："+array[0]+"延迟数据为 👉"+Ping)
             Ping = " ⚡️ 节点延迟 ➟ 「 "+Ping + " 」 "
         }
         const mes1 = {
@@ -152,16 +152,16 @@ function ReOrder(cnt) {
             content: dict
         }; 
         $configuration.sendMessage(mes1).then(resolve => {
-            if (resolve.ret) {
-                console.log(resolve.ret);
-                content =pflag==0 && array[0]? `<p style="text-align: center; font-family: -apple-system; font-size: large; font-weight: thin"><br><b> 😭 该节点被 Google 送中 </b><br><br>👇<br><br><font color=#FF5733>-------------------------<br><b>⟦ `+policy+` ⟧ </b><br>-------------------------</font>` : `<p style="text-align: center; font-family: -apple-system; font-size: large; font-weight: thin"><br><b>🎉 该节点未被 Google 送中 </b><br><br>👇<br><br><font color=#FF5733>-------------------------<br><b>⟦ `+policy+` ⟧ </b><br>-------------------------</font>`
-                content = pflag!=0 && !array[0]? `<p style="text-align: center; font-family: -apple-system; font-size: large; font-weight: thin">` + "<br>❌  <b>⟦ "+policy+ " ⟧ </b>⚠️ 切换失败<br><br><b>该策略组内未找到被 Google 送中</b> 的节点" + "<br><br><font color=#FF5733>-----------------------------<br><b>检测详情请查看JS脚本记录</b><br>-----------------------------</font>"+`</p>` : content
+            if (resolve.error) {
+                console.log(resolve.error);
+                content =pflag==0 && array[0]? `<p style="text-align: center; font-family: -apple-system; font-size: large; font-weight: thin"><br><b> 🎉 该节点未被 Google 送中 </b><br><br>👇<br><br><font color=#FF5733>-------------------------<br><b>⟦ `+policy+` ⟧ </b><br>-------------------------</font>` : `<p style="text-align: center; font-family: -apple-system; font-size: large; font-weight: thin"><br><b>😭 该节点已被 Google 送中 </b><br><br>👇<br><br><font color=#FF5733>-------------------------<br><b>⟦ `+policy+` ⟧ </b><br>-------------------------</font>`
+                content = pflag!=0 && !array[0]? `<p style="text-align: center; font-family: -apple-system; font-size: large; font-weight: thin">` + "<br>❌  <b>⟦ "+policy+ " ⟧ </b>⚠️ 切换失败<br><br><b>该策略组内未找到未被 Google 送中</b> 的节点" + "<br><br><font color=#FF5733>-----------------------------<br><b>检测详情请查看JS脚本记录</b><br>-----------------------------</font>"+`</p>` : content
                 $done({"title":"Google 送中检测&切换", "htmlMessage": content})
             }
-            if (resolve.error) {
-                console.log("已经切换至被 <b>Google 送中</b> 的路线中延迟最优节点 ➟ "+array[0])
-                if (cronsign == "N") { $notify("🐸 Google 定时送中检测&切换", "🎉 已切换至被送中的最优延迟线路👇", array[0] +"\n 👉 "+Ping)}
-                content = `<p style="text-align: center; font-family: -apple-system; font-size: large; font-weight: thin">` + "<br><b>⟦ "+policy+ " ⟧ </b>已切换至被<b>Google</b> 送中延迟最优路线<br><br> 👇<br><br> ⟦ "+array[0]+ " ⟧" + "<br><br><font color=#16A085>"+Ping+"</font><br><font color=#FF5733>-----------------------------<br><b>检测详情请查看JS脚本记录</b><br>-----------------------------</font>"+`</p>`
+            if (resolve.ret) {
+                console.log("已经切换至未被 <b>Google 送中</b> 的路线中延迟最优节点 ➟ "+array[0])
+                if (cronsign == "N") { $notify("🐸 Google 定时送中检测&切换", "🎉 已切换至未被送中的最优延迟线路👇", array[0] +"\n 👉 "+Ping)}
+                content = `<p style="text-align: center; font-family: -apple-system; font-size: large; font-weight: thin">` + "<br><b>⟦ "+policy+ " ⟧ </b>已切换至未被<b>Google</b> 送中延迟最优路线<br><br> 👇<br><br> ⟦ "+array[0]+ " ⟧" + "<br><br><font color=#16A085>"+Ping+"</font><br><font color=#FF5733>-----------------------------<br><b>检测详情请查看JS脚本记录</b><br>-----------------------------</font>"+`</p>`
                 $done({"title":"Google 送中检测&切换", "htmlMessage": content })
             }
     }, reject => {
@@ -229,3 +229,4 @@ function testGoogle(pname) {
         });
         })
     }
+
