@@ -1,5 +1,5 @@
 /***
-
+引用@XIAO_KOP大佬
 For Quantumult-X 598+ ONLY!!
 
 [task_local]
