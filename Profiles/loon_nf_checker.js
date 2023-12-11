@@ -64,12 +64,12 @@ function nfTest() {
                 resolve("404 Not Found");
             } else if (response.status == 200) {
                 console.log("NF request result:" + JSON.stringify(response.headers));
-                let ourl = response.headers['X-Originating-URL']
-                if (ourl == undefined) {
-                    ourl = response.headers['X-Originating-Url']
+                let url = response.headers['X-Originating-URL']
+                if (url == undefined) {
+                    url = response.headers['X-Originating-Url']
                 }
-                console.log("X-Originating-URL:" + ourl)
-                let region = ourl.split('/')[3]
+                console.log("X-Originating-URL:" + url)
+                let region = url.split('/')[3]
                 region = region.split('-')[0];
                 if (region == 'title') {
                     region = 'us'
