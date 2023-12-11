@@ -64,7 +64,7 @@ function nfTest() {
                 resolve("404 Not Found");
             } else if (response.status == 200) {
                 console.log("NF request result:" + JSON.stringify(response.headers));
-                let url = response.headers['X-Originating-URL']
+                let url = response.headers['X-Originating-Url']
                 if (url == undefined) {
                     url = response.headers['X-Originating-Url']
                 }
