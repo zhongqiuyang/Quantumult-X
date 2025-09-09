@@ -1,0 +1,14 @@
+DOMAIN-SUFFIX,n26.de
+DOMAIN-SUFFIX,n26.com
+DOMAIN-SUFFIX,tech26.de
+DOMAIN-SUFFIX,number26.de
+
+# 一些第三方服务 (可能被 N26 App 调用)
+DOMAIN-SUFFIX,adjust.com
+DOMAIN-SUFFIX,usercentrics.eu
+DOMAIN-SUFFIX,prodregistryv2.org
+DOMAIN-SUFFIX,featureassets.org
+DOMAIN-SUFFIX,beyondwickedmapping.org
+DOMAIN-SUFFIX,braze.eu
+DOMAIN-SUFFIX,mebimmer.de
+DOMAIN,aggregator.service.usercentrics.eu
