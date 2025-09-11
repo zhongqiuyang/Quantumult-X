@@ -1,29 +1,10 @@
-DOMAIN-SUFFIX,bybit.eu
 DOMAIN-SUFFIX,ffe390afd658c19dcbf707e0597b846d.de
 DOMAIN-SUFFIX,ffbbbdc6d3c353211fe2ba39c9f744cd.com
-DOMAIN,firebaselogging-pa.googleapis.com
-DOMAIN,bybit-exchange.github.io
-DOMAIN,bybit.ada.support
-DOMAIN-SUFFIX,bycsi.com
-DOMAIN-SUFFIX,bytick.com
-DOMAIN-SUFFIX,byapis.com
-DOMAIN-SUFFIX,bycbe.com
-DOMAIN-SUFFIX,bymj.io
-DOMAIN-SUFFIX,bybit-global.com
-DOMAIN-SUFFIX,bybitglobal.com
-
-IP-CIDR,13.32.121.6/32,no-resolve
-IP-CIDR,43.133.238.145/32,no-resolve
-IP-CIDR,13.33.187.108/32,no-resolve
-IP-CIDR,150.109.230.182/32,no-resolve
-IP-CIDR,142.251.215.234/32,no-resolve
-IP-CIDR,43.133.241.84/32,no-resolve
-IP-CIDR,3.160.150.37/32,no-resolve
 
 # Specific domains
+DOMAIN,bybit-exchange.github.io
+DOMAIN,bybit.ada.support
 DOMAIN,monitor-frontend-collector.a.bybit-aws.com
-DOMAIN,api3.bybit.biz
-DOMAIN,www.bybits.org
 
 # Main domain suffixes
 DOMAIN-SUFFIX,bybit.com
@@ -41,15 +22,13 @@ DOMAIN-SUFFIX,bybit.com.br
 DOMAIN-SUFFIX,bybitapi.com
 DOMAIN-SUFFIX,bybit.net
 DOMAIN-SUFFIX,bybits.org
+DOMAIN-SUFFIX,bycsi.com
+DOMAIN-SUFFIX,bytick.com
+DOMAIN-SUFFIX,byapis.com
+DOMAIN-SUFFIX,bycbe.com
+DOMAIN-SUFFIX,bymj.io
+DOMAIN-SUFFIX,bybit-global.com
+DOMAIN-SUFFIX,bybitglobal.com
 
 # Third-party services used by Bybit
 DOMAIN-SUFFIX,appsflyersdk.com
-DOMAIN-SUFFIX,geetest.com
-
-# User-Agent rules for mobile app
-USER-AGENT,*Bybit*
-USER-AGENT,Bybit*
-
-# Process rules for mobile app (backup)
-PROCESS-NAME,com.bybit.app
-PROCESS-NAME,com.bybit.global
